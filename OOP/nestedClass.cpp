@@ -22,5 +22,6 @@ int main()
     Outer o;
     o.fun();
 
+    
     return 0;
 }
