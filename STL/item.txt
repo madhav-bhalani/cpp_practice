@@ -1,0 +1,9 @@
+phone
+12
+34
+cover
+2
+45
+ipad
+23
+5
