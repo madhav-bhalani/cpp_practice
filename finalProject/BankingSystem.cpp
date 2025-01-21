@@ -8,14 +8,14 @@ using namespace std;
 
 #define MIN_BAL 500
 
-class InsufficientFunds{};
+class InsufficientFunds: public exception{};
 
 class Account{
     private:
         long accNumber;
         string firstName;
         string lastName;
-        float balance;
+        float balance;  
         static long nextAccNumber;
 
     public:
