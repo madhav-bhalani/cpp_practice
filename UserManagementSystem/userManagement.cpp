@@ -49,6 +49,8 @@ class UserManagement{
         void displayAllUsers();
         User viewUserInfo(string uname);       
         bool updateEmail(string uname, string newMail);
+        bool updatePhone(string uname, string newPhone);
+        bool updatePass(string uname, string newPass);
 };
 
 int main()
@@ -143,12 +145,28 @@ bool User::verifyPass(string pass){
     }
 }
 
-void User::updatePass(string newPass){
-    if(password != newPass){
-        password = newPass;
+bool UserManagement::updatePass(string uname, string newPass){
+    map<string, User>::iterator itr = users.find(uname);
+
+    if(itr != users.end() && itr->second.verifyPass(newPass) == false){
+        itr->second.updatePass(newPass);
+        return true;
     }
+    else if(itr == users.end()){
+        cout<<"User "<<uname<<" does not exist!!";
+    }
+    else{
+        cout<<"The new password is same as the current password";
+    }
+    return false;
 }
 
+void User::updatePass(string newPass){
+        password = newPass;
+}
+
+
+//UPDATE EMAIL
 bool UserManagement::updateEmail(string uname, string newMail){
     map<string, User>::iterator itr = users.find(uname);
 
@@ -165,16 +183,33 @@ bool UserManagement::updateEmail(string uname, string newMail){
 
     return false;
 }
-
-void User::updatePhone(string newPhone){
-    if(phone != newPhone){
-        phone = newPhone;
-    }
-}
-
 void User::updateEmail(string newEmail){
      email = newEmail;
 }
+
+
+//UPDATE PHONE
+bool UserManagement::updatePhone(string uname, string newPhone){
+    map<string, User>::iterator itr = users.find(uname);
+
+    if(itr!=users.end() && itr->second.getPhone()!=newPhone){
+        itr->second.updatePhone(newPhone);
+        return true;
+    }
+    else if(itr == users.end()){
+        cout<<"User "<<uname<<" does not exist!!";
+    }
+    else{
+        cout<<"New phone number is same as the current phone number!!";
+    }
+
+    return false;
+}
+void User::updatePhone(string newPhone){
+
+    phone = newPhone;
+}
+
 
 
 ofstream & operator<<(ofstream &ofs, User &u){
@@ -202,7 +237,6 @@ ostream & operator<<(ostream &os, User &u){
 
 
 //declarations of the UserManagement class
-
 UserManagement::UserManagement(){
     User user;
     ifstream ifs;
