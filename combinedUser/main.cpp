@@ -149,9 +149,14 @@ int main()
                 {
                     cout<<"Enter username: ";
                     cin>>uname;
-                    user = userMan.viewUserInfo(uname);
-                    cout<<user;
-                    break;
+                   try {
+                                    User user = userMan.viewUserInfo(uname);
+                                    cout << user; 
+                                } 
+                            catch (const runtime_error& e) {
+                                    cout << e.what() << endl; 
+                            }   
+                            break;
                 }
                 case 7:
                 {
@@ -167,7 +172,7 @@ int main()
                 }
                 case 9:
                 {
-                    break;
+                    exit(0);
                 }
                 default:
                 {
@@ -228,7 +233,67 @@ int main()
                             }
                         
                             break;
+                        }
+                        case 3:
+                        {
+                            cout<<"Enter yout username: ";
+                            cin>>uname;
+                            cout<<"Enter the new phone number here: ";
+                            cin>>newPhone;
+                            bool succ = userMan.updatePhone(uname, newPhone);
+                            if(succ){
+                                cout<<"Phone number updated successfully";
                             }
+                            else{
+                                cout<<"Phone number update failed!!";
+                            }
+                    
+                            break;
+                        }
+
+                        case 4:
+                        {
+                            cout<<"Enter your username: ";
+                            cin>>uname;
+                            cout<<"Enter the new password here: ";
+                            cin>>newPass;
+                            bool succe = userMan.updatePass(uname, newPass);
+                            if(succe){
+                                cout<<"Password updated successgully";
+                            }
+                            else{
+                                cout<<"Password update failed!!";
+                            }
+                
+                            break;
+                        }
+
+                        case 5:
+                        {
+                            cout<<"Enter username: ";
+                            cin>>uname;
+                            try {
+                                    User user = userMan.viewUserInfo(uname);
+                                    cout << user; 
+                                } 
+                            catch (const runtime_error& e) {
+                                    cout << e.what() << endl; 
+                            }   
+                            break;
+
+                        }
+                        case 6:
+                        {
+                            exit(0);
+                        }
+
+                        default:
+                        {
+                            cout<<"\nInvalid input.";
+                            exit(0);
+                        }
+
+
                     }
                 }while(c2!=6);
             }

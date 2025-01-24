@@ -32,6 +32,7 @@ class User{
 
         bool verifyPass(string pass);
         bool verifyPhone(string ph);
+        bool verifyUser(string uname);
         void updatePass(string newPass);
         void updateEmail(string newEmail);
         void updatePhone(string newPhone);

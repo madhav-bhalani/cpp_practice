@@ -39,6 +39,15 @@ bool User::verifyPass(string pass){
     }
 }
 
+bool User::verifyUser(string uname){
+    if(username == uname){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 bool User::verifyPhone(string ph) {
     if (ph.length() != PHONE_LEN || !all_of(ph.begin(), ph.end(), ::isdigit)) {
         cout << "Invalid phone number" << endl;

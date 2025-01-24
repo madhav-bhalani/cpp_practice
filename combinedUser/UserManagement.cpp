@@ -142,6 +142,8 @@ bool UserManagement::removeUser(string uname){
 bool UserManagement::loginUser(string uname, string pass){
     map<string, User>::iterator itr = users.find(uname);
 
+
+
     if(itr != users.end() && itr->second.verifyPass(pass)){
         cout<<"Logged in successfully";
         return true;
@@ -164,8 +166,14 @@ void UserManagement::displayAllUsers(){
 }
 
 User UserManagement::viewUserInfo(string uname){
+    
     map<string, User>::iterator itr = users.find(uname);
-    return itr->second;
+    if(itr != users.end()){
+        return itr->second;
+    }
+    else{
+        throw runtime_error("Invalid username: " + uname);
+    }
 }
 
 UserManagement::~UserManagement(){
