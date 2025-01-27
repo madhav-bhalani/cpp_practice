@@ -149,14 +149,14 @@ int main()
                 {
                     cout<<"Enter username: ";
                     cin>>uname;
-                   try {
-                                    User user = userMan.viewUserInfo(uname);
-                                    cout << user; 
-                                } 
-                            catch (const runtime_error& e) {
-                                    cout << e.what() << endl; 
-                            }   
-                            break;
+                    try {
+                            User user = userMan.viewUserInfo(uname);
+                            cout << user; 
+                    } 
+                    catch (const runtime_error& e) {
+                        cout << e.what() << endl; 
+                    }   
+                    break;
                 }
                 case 7:
                 {
