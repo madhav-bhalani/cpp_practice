@@ -16,7 +16,6 @@ class DiceGame{
             return round;
         }
 
-
 };
 
 class Player:public DiceGame{
