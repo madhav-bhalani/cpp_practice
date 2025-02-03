@@ -100,6 +100,7 @@ int main()
         cin>>ip;
 
         if(ip == 1){
+            cout<<"Round "<<i<<endl;
             game.play();
         }
         else{
